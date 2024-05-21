@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  owncloud:
+    image: owncloud/server:latest
+    ports:
+      - "8180:8080"
+      - "4433:443"
+    volumes:
+      - ./data:/var/www/html
+      - ./config:/var/www/config
+      - ./owncloud/backup:/var/lib/owncloud/data/backup
+      - ./owncloud/files:/var/lib/owncloud/data
+      - ./owncloud/mysql:/var/lib/mysql
+      - ./owncloud/redis:/var/lib/redis
+    environment:
+      - MYSQL_ROOT_PASSWORD=owncloud
+      - MYSQL_DATABASE=owncloud
+      - MYSQL_USER=owncloud
+      - MYSQL_PASSWORD=owncloud
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MEMCACHED_HOST=redis
+      - MEMCACHED_PORT=6379
+      # Variables para usuario y contraseña
+      - OWNCLOUD_ADMIN_USERNAME=admin
+      - OWNCLOUD_ADMIN_PASSWORD=bolson
+      - OWNCLOUD_TRUSTED_DOMAINS=192.168.170.2
+      - OWNCLOUD_DOMAIN=http://192.168.170.2:8180
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./owncloud/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=owncloud
+      - MYSQL_DATABASE=owncloud
+      - MYSQL_USER=owncloud
+      - MYSQL_PASSWORD=owncloud
+  redis:
+    image: redis:latest
+    volumes:
+      - ./owncloud/redis:/data
