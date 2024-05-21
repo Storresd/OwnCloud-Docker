@@ -6,6 +6,7 @@ services:
       - "8080:8080"
       - "4433:443"
     volumes:
+      #Definir las rutas donde guardar los archivos
       - ./data:/var/www/html
       - ./config:/var/www/config
       - ./owncloud/backup:/var/lib/owncloud/data/backup
