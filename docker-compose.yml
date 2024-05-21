@@ -3,7 +3,7 @@ services:
   owncloud:
     image: owncloud/server:latest
     ports:
-      - "8180:8080"
+      - "8080:8080"
       - "4433:443"
     volumes:
       - ./data:/var/www/html
@@ -23,9 +23,9 @@ services:
       - MEMCACHED_PORT=6379
       # Variables para usuario y contraseña
       - OWNCLOUD_ADMIN_USERNAME=admin
-      - OWNCLOUD_ADMIN_PASSWORD=bolson
-      - OWNCLOUD_TRUSTED_DOMAINS=192.168.170.2
-      - OWNCLOUD_DOMAIN=http://192.168.170.2:8180
+      - OWNCLOUD_ADMIN_PASSWORD=password
+      - OWNCLOUD_TRUSTED_DOMAINS= #IP del servidor
+      - OWNCLOUD_DOMAIN= #Ruta de acceso al servidor http://IP:Puerto
   db:
     image: mysql:5.7
     volumes:
