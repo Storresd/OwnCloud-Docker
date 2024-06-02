@@ -21,7 +21,7 @@ services:
       - OWNCLOUD_DB_HOST=db
       # Variables para usuario y contraseña
       - OWNCLOUD_ADMIN_USERNAME=admin
-      - OWNCLOUD_ADMIN_PASSWORD=12QWasZX,.-123
+      - OWNCLOUD_ADMIN_PASSWORD=password
       - OWNCLOUD_MYSQL_UTF8MB4=true
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
