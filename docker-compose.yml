@@ -27,7 +27,7 @@ services:
       - OWNCLOUD_REDIS_HOST=redis
     volumes:
       - ./files:/mnt/data
-        db:
+  db:
     image: mariadb:latest
     container_name: own_mariadb
     restart: always
